@@ -1,0 +1,239 @@
+% MIT License
+%
+% Copyright (c) 2020 Ivan Moreno
+%
+% Permission is hereby granted, free of charge, to any person obtaining a copy
+% of this software and associated documentation files (the "Software"), to deal
+% in the Software without restriction, including without limitation the rights
+% to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+% copies of the Software, and to permit persons to whom the Software is
+% furnished to do so, subject to the following conditions:
+%
+% The above copyright notice and this permission notice shall be included in all
+% copies or substantial portions of the Software.
+%
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+% IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+% AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+% SOFTWARE.
+
+%---------------------------------------------------------------------%
+
+% Use the size that you prefer.
+\documentclass[12pt]{article}
+
+%------------------------------%
+% Input and font.
+
+\usepackage[T1]{fontenc}
+\usepackage{moresize}
+
+\usepackage{url}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{ifthen}
+
+% Replace with your OTF of choice. Remember to compile
+% with XeLaTeX!
+\usepackage{fontspec}
+\setmainfont[Ligatures=TeX]{Fira Sans Light}
+
+%------------------------------%
+% Page
+
+% Yes, this template doesn't use the European standard.
+% Change all of this if you have to.
+\usepackage[letterpaper]{geometry}
+\geometry{top=1.5cm, bottom=1.25cm, left=2.5cm, right=2.5cm}
+
+% Removing the page number.
+\renewcommand{\thepage}{}
+% Removing the section number.
+\renewcommand{\thesection}{}
+
+\setlength{\parindent}{15pt}
+
+%------------------------------%
+% Colors
+
+% Use the colors that you like. Color-palette generators
+% are really useful.
+\usepackage{color}
+\definecolor{maintext}{RGB}{27,27,30}
+\definecolor{secondarytext}{RGB}{95,107,129}
+\definecolor{accentcolor}{RGB}{25,54,101}
+\definecolor{secondaccentcolor}{RGB}{134,187,216}
+\color{maintext}
+
+%------------------------------%
+% Macros for the CV/resume entries.
+
+% Section.
+% Takes the name of the section and stylizes it, adding a
+% horizontal line after it.
+\newcommand{\resumesection}[1]{
+    {
+        \color{accentcolor}
+        \noindent
+        \large{#1}
+        \vspace{-8pt}
+
+        \noindent
+        \rule{\textwidth}{2pt}
+    }
+}
+
+% Personal information entry.
+% Takes a pair of facts about you as input. They can be
+% your website, your social media, your email,
+% They get put in one line, opposite to each other.
+and so on.
+\newcommand{\info}[2]{
+    {
+        \color{secondarytext}
+        \trivlist\nopagebreak
+        \parindent0pt
+        \item #1 \hspace{\fill} #2
+        \item\relax\obeylines
+    }
+    \vspace{-5pt}
+}
+
+% Experience/extracurricular activity entry.
+% Takes the following:
+% 1. Date (in whatever format you want).
+% 2. Title or position.
+% 3. Company, organization or institution.
+% 4. Place.
+% 5. Description (in whatever format you like).
+\newcommand{\job}[5]{
+    \textbf{#2}, #3 \hspace{\fill} #1
+
+    {\color{secondarytext}#4}
+
+    #5
+
+    \vspace{-5pt}
+    {
+        \color{secondaccentcolor}
+        \rule{0.96\textwidth}{0.5pt}
+    }
+
+    \vspace{15pt}
+}
+
+% Education entry.
+% Takes the following:
+% 1. Date (in whatever format you want).
+% 2. Degree.
+% 3. Institution.
+% 4. Place.
+\newcommand{\education}[4]{
+    \textbf{#2}, #3 \hspace{\fill} #1
+
+    {\color{secondarytext}#4}
+
+    \vspace{-5pt}
+    {
+        \color{secondaccentcolor}
+        \rule{0.96\textwidth}{0.5pt}
+    }
+
+    \vspace{15pt}
+}
+
+% Project entry.
+% Takes the following:
+% 1. Project name.
+% 2. Link to the project.
+% 3. Description (again, in whatever format you want).
+\newcommand{\project}[3]{
+    #1 \hspace{\fill} \url{#2}
+
+    #3
+
+    \vspace{-5pt}
+    {
+        \color{secondaccentcolor}
+        \rule{0.96\textwidth}{0.5pt}
+    }
+
+    \vspace{15pt}
+}
+
+% Language entry.
+% You can opt to not use this entry, it just to make a
+% pretty listing of the languages you know.
+% Takes the following:
+% 1. Language.
+% 2. Proficiency level.
+\newcommand{\languageprof}[2]{
+    \raisebox{3pt}{$\centerdot$} \textbf{#1} - #2
+
+    \vspace{5pt}
+}
+
+% Award/honor entry. If you change the font size, you'll
+% probably have to change the hspace inside this macro.
+% Takes the following:
+% 1. Name of the award/honor.
+% 2. Year.
+% 3. Description of the award/honor (optional).
+\newcommand{\award}[3]{
+    \raisebox{3pt}{$\centerdot$} #1 \hspace{\fill} #2
+
+    \ifthenelse{\equal{#3}{}}{
+    }{
+        \hspace{7pt}#3
+    }
+
+    \vspace{5pt}
+}
+
+% List entry.
+% Makes bullet points that have less indentation and less
+% space between lines.
+\newcommand{\closerlist}[1]{
+    \raisebox{3pt}{$\centerdot$} #1
+
+    \vspace{5pt}
+}
+
+%---------------------------------------------------------------------%
+
+\begin{document}
+
+\begin{center}
+    \HUGE{Your Name} \\
+    \vspace{0.25cm}
+    \Large{What you do for a living}
+\end{center}
+
+\info{Your City Greater Area, Your State}{your.website.com/}
+\info{youremail@address.com}{github.com/YourUsername}
+\info{555 555 5555}{Maybe your LinkedIn?}
+\vspace{15pt}
+
+\resumesection{Summary}
+
+\hangindent=15pt
+Remember to add more sections and entries as you need to. You'll find all
+the macros that this template defines in the preamble. They are:
+
+\closerlist{resumesection}
+\closerlist{info}
+\closerlist{job}
+\closerlist{education}
+\closerlist{project}
+\closerlist{languageprof}
+\closerlist{award}
+\closerlist{closerlist}
+
+\vspace{15pt}
+
+\end{document}
